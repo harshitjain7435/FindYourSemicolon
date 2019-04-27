@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<script lang="javascript">
+    /*
+    We are dealing with java script 
+    so (4+5)/2 will give you 4.5 not 4 
+    so if we have 6 element then
+    min=0
+    max=n-1=6-1=5
+    so mid=(0+5)/2=2.5
+    bt it should be 2
+    so mid=parseInt((0+5)/2)=2
+    */
+			var array=new Array();
+			function fun()
+			{
+				var num=parseInt(document.getElementById("t1").value);	
+				array.push(num);
+				document.getElementById("p1").innerHTML=array;
+			}	
+
+			var mid;
+			function binarySearch(min,max,ele)
+			{
+				if (min > max)
+				{
+					document.getElementById("p2").innerHTML="Not Found";
+					return;
+			    }
+			    mid = parseInt((min + max) / 2);
+
+			    if (array[mid] == ele)
+			    {
+			    	document.getElementById("p2").innerHTML="Key Found";
+			    }
+			    else if (array[mid] > ele)
+			    {
+			        binarySearch(min, mid - 1, ele);
+
+			    }
+			    else if (array[mid] < ele)
+			    {
+			        binarySearch(mid + 1,max, ele);
+			    }
+			}
+			function sort()
+			{
+				var n=parseInt(document.getElementById("t2").value);
+				binarySearch(0,(array.length)-1,n);
+				return;
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="t1" >
+		<button onclick="fun()">Add Value</button><br/>
+		<input type="text" id="t2" >
+		<button onclick="sort()">Search</button>
+		<p id="p1">Hello Java Script</p>
+		<p id="p2"></p>
+	</body>
+</html>
